@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="row bg-light h-10 d-block text-center">
+            <h1>All the Users</h1>
+        </div>
+        <div class="row bg-light h-40 d-block">
+            <div class="col-6 offset-3">
+                <table class="table table-hover table-sm">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for myuser in User %}
+                        <tr>
+                            <th scope="row">{{myuser.id}}</th>
+                            <td>{{myuser.first_name}}&nbsp;{{ myuser.last_name}}</td>
+                            <td>{{myuser.email_address}}</td>
+                            <td>{{myuser.age}}</td>
+                        {% endfor %}
+                        <tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <form action="/UserAddDisplay" method="post">
+            {% csrf_token %}
+            <div class="row bg-light h-60">
+                <div class="col-6">
+                    <div class="col"><br>
+                        <div class="offset-4">
+                            <p>First Name: <input name="first_name" type="text"></p>
+                            <p>Email: <input name="email_address" type="text"></p>  
+                        </div>                
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="col "><br>
+                        <div class="pull-left">
+                            <p>Last Name: <input name="last_name" type="text"></p>
+                            <p>Age: <input name="age" type="text"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-block justify-content-center w-100">
+                    <button class="border-dark shadow p-3 mb-5 w-40 h-20" type="submit">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

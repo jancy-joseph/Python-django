@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head> 
+<body>
+    <div id="mydiv">
+        <div id="yourgoldp">
+            <p>Your gold:{{request.session.points}}</p>
+        </div>
+        <form class="formclass" action="/process_money" method="post" id="myform">
+            {% csrf_token %}
+            <input type="hidden" name="Building" value="1">
+            <p class="phead">farm</p>
+            <p class="phead">(earns 10-20 golds)</p>
+            <button class="mybuttons"input="submit">Generate</button>
+        </form>
+        <form class="formclass" action="/process_money" method="post" id="myform">
+            {% csrf_token %}
+            <input type="hidden" name="Building" value="2">
+            <p class="phead">Cave</p>
+            <p class="phead">(earns 5-10 golds)</p>
+            <button class="mybuttons" input="submit">Generate</button>
+        </form>
+        <form class="formclass" action="/process_money" method="post" id="myform">
+            {% csrf_token %}
+            <input type="hidden" name="Building" value="3">
+            <p class="phead">House</p>
+            <p class="phead">(earns 2-5 golds)</p>
+            <button class="mybuttons" input="submit">Generate</button>
+        </form>
+        <form class="formclass" action="/process_money" method="post" id="myform">
+            {% csrf_token %}
+            <input type="hidden" name="Building" value="4">
+            <p class="phead">Casino </p>
+            <p class="phead">(earns/takes 0-50 golds)</p>
+            <button class="mybuttons" input="submit">Generate</button>
+        </form>
+        <div id="footer">
+            <p>Activities:</p>
+            <div class="scroll scroll4">
+                <div class="content">{{request.session.mytext}}</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

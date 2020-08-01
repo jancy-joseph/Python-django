@@ -1,0 +1,11 @@
+#mydivform{
+    display:block;
+    text-align: center;
+}
+#mydivform #myform{
+    display:inline-block;
+    margin:0px 10px 0px 10px;
+    text-align: left;
+    border:2px;
+    border-color: black;
+}

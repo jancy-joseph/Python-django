@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- {% load static %}
+    <script src="{% static 'js/script.js' %}"></script> -->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 text-right">
+                <a href="/success">Back</a>
+            </div>
+            <div class="col-sm-4 text-right ">
+                <form action="/logout" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="myform" value="1">
+                <div class="form-group row">
+                    <div class="col-sm-3"></div>
+                    <input type="submit" value="Logout" class="col-sm-4 btn btn-primary">
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="col-sm-4 text-left">
+            <h6>{{mypostusername}}&nbsp;Quotes</h6>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="col-sm-6">
+                    {% for post in userposts.all %}
+                    <div class="form-group row">
+                        {{post.message}}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

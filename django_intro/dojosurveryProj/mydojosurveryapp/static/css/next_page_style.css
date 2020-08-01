@@ -1,0 +1,10 @@
+body*{
+    padding:10px;
+}
+#mydiv{
+    padding:20px;
+    margin:30px;
+    background-color: cadetblue;
+    width:300px;
+    min-height: 300px;
+}

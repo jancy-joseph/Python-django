@@ -1,0 +1,685 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww33400\viewh18200\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 (djangoPy3Env) smaliakkal-a01:Python_Project smaliakkal$ python manage.py shell\
+Python 3.8.1 (v3.8.1:1b293b6006, Dec 18 2019, 14:08:53)\
+[Clang 6.0 (clang-600.0.57)] on darwin\
+Type "help", "copyright", "credits" or "license" for more information.\
+(InteractiveConsole)\
+>>> from gymbro.models import *\
+>>> s1= Stat.objects.get(id=2)\
+>>> s1\
+<\
+id:2\
+user_id:1\
+1\
+>\
+>>>\
+>>> s2= Stat.objects.get(id=1)\
+>>> s2\
+<\
+id:1\
+user_id:1\
+1\
+>\
+>>> stat.objects.all()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+NameError: name 'stat' is not defined\
+>>> Stat.objects.all()\
+<QuerySet [<\
+id:1\
+user_id:1\
+1\
+>, <\
+id:2\
+user_id:1\
+1\
+>, <\
+id:3\
+user_id:1\
+1\
+>, <\
+id:4\
+user_id:1\
+1\
+>, <\
+id:5\
+user_id:1\
+1\
+>, <\
+id:6\
+user_id:1\
+1\
+>, <\
+id:7\
+user_id:1\
+1\
+>, <\
+id:8\
+user_id:1\
+1\
+>, <\
+id:9\
+user_id:1\
+16\
+>, <\
+id:10\
+user_id:1\
+16\
+>, <\
+id:11\
+user_id:1\
+16\
+>, <\
+id:12\
+user_id:1\
+16\
+>, <\
+id:13\
+user_id:1\
+16\
+>, <\
+id:14\
+user_id:1\
+10\
+>, <\
+id:15\
+user_id:1\
+10\
+>, <\
+id:16\
+user_id:1\
+10\
+>, <\
+id:17\
+user_id:1\
+10\
+>, <\
+id:18\
+user_id:1\
+10\
+>, <\
+id:19\
+user_id:2\
+11\
+>, <\
+id:20\
+user_id:2\
+11\
+>, '...(remaining elements truncated)...']>\
+>>>\
+>>>\
+>>>\
+>>>\
+>>>\
+>>>\
+>>>\
+>>> u1 = User.objects.get(id=1)\
+>>> u1.stats\
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x10d889ca0>\
+>>> u1.stats.all()\
+<QuerySet [<\
+id:1\
+user_id:1\
+1\
+>, <\
+id:2\
+user_id:1\
+1\
+>, <\
+id:3\
+user_id:1\
+1\
+>, <\
+id:4\
+user_id:1\
+1\
+>, <\
+id:5\
+user_id:1\
+1\
+>, <\
+id:6\
+user_id:1\
+1\
+>, <\
+id:7\
+user_id:1\
+1\
+>, <\
+id:8\
+user_id:1\
+1\
+>, <\
+id:9\
+user_id:1\
+16\
+>, <\
+id:10\
+user_id:1\
+16\
+>, <\
+id:11\
+user_id:1\
+16\
+>, <\
+id:12\
+user_id:1\
+16\
+>, <\
+id:13\
+user_id:1\
+16\
+>, <\
+id:14\
+user_id:1\
+10\
+>, <\
+id:15\
+user_id:1\
+10\
+>, <\
+id:16\
+user_id:1\
+10\
+>, <\
+id:17\
+user_id:1\
+10\
+>, <\
+id:18\
+user_id:1\
+10\
+>]>\
+>>> u1 = User.objects.get(id=2))\
+  File "<console>", line 1\
+SyntaxError: unmatched ')'\
+>>> u2.stats.all()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+NameError: name 'u2' is not defined\
+>>> u1.stats.all()\
+<QuerySet [<\
+id:1\
+user_id:1\
+1\
+>, <\
+id:2\
+user_id:1\
+1\
+>, <\
+id:3\
+user_id:1\
+1\
+>, <\
+id:4\
+user_id:1\
+1\
+>, <\
+id:5\
+user_id:1\
+1\
+>, <\
+id:6\
+user_id:1\
+1\
+>, <\
+id:7\
+user_id:1\
+1\
+>, <\
+id:8\
+user_id:1\
+1\
+>, <\
+id:9\
+user_id:1\
+16\
+>, <\
+id:10\
+user_id:1\
+16\
+>, <\
+id:11\
+user_id:1\
+16\
+>, <\
+id:12\
+user_id:1\
+16\
+>, <\
+id:13\
+user_id:1\
+16\
+>, <\
+id:14\
+user_id:1\
+10\
+>, <\
+id:15\
+user_id:1\
+10\
+>, <\
+id:16\
+user_id:1\
+10\
+>, <\
+id:17\
+user_id:1\
+10\
+>, <\
+id:18\
+user_id:1\
+10\
+>]>\
+>>>\
+>>>\
+>>>\
+>>> u2 = User.objects.get(id=2))\
+  File "<console>", line 1\
+SyntaxError: unmatched ')'\
+>>> u2 = User.objects.get(id=2)\
+>>> u2.stats.all()\
+<QuerySet [<\
+id:19\
+user_id:2\
+11\
+>, <\
+id:20\
+user_id:2\
+11\
+>, <\
+id:21\
+user_id:2\
+11\
+>, <\
+id:22\
+user_id:2\
+11\
+>, <\
+id:23\
+user_id:2\
+11\
+>, <\
+id:24\
+user_id:2\
+11\
+>, <\
+id:25\
+user_id:2\
+16\
+>, <\
+id:26\
+user_id:2\
+16\
+>, <\
+id:27\
+user_id:2\
+16\
+>, <\
+id:28\
+user_id:2\
+16\
+>, <\
+id:29\
+user_id:2\
+16\
+>, <\
+id:30\
+user_id:2\
+16\
+>, <\
+id:31\
+user_id:2\
+16\
+>, <\
+id:32\
+user_id:2\
+16\
+>, <\
+id:33\
+user_id:2\
+16\
+>, <\
+id:34\
+user_id:2\
+16\
+>, <\
+id:35\
+user_id:2\
+16\
+>, <\
+id:36\
+user_id:2\
+16\
+>]>\
+>>> usrstats = u2.stats.all()\
+>>> usrstats.excercise.id\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+AttributeError: 'QuerySet' object has no attribute 'excercise'\
+>>> usrstats\
+<QuerySet [<\
+id:19\
+user_id:2\
+11\
+>, <\
+id:20\
+user_id:2\
+11\
+>, <\
+id:21\
+user_id:2\
+11\
+>, <\
+id:22\
+user_id:2\
+11\
+>, <\
+id:23\
+user_id:2\
+11\
+>, <\
+id:24\
+user_id:2\
+11\
+>, <\
+id:25\
+user_id:2\
+16\
+>, <\
+id:26\
+user_id:2\
+16\
+>, <\
+id:27\
+user_id:2\
+16\
+>, <\
+id:28\
+user_id:2\
+16\
+>, <\
+id:29\
+user_id:2\
+16\
+>, <\
+id:30\
+user_id:2\
+16\
+>, <\
+id:31\
+user_id:2\
+16\
+>, <\
+id:32\
+user_id:2\
+16\
+>, <\
+id:33\
+user_id:2\
+16\
+>, <\
+id:34\
+user_id:2\
+16\
+>, <\
+id:35\
+user_id:2\
+16\
+>, <\
+id:36\
+user_id:2\
+16\
+>]>\
+>>> usrstats.user.id\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+AttributeError: 'QuerySet' object has no attribute 'user'\
+>>> for i inrange(0,len(usrstats)):\
+  File "<console>", line 1\
+    for i inrange(0,len(usrstats)):\
+          ^\
+SyntaxError: invalid syntax\
+>>> for i in range(0,len(usrstats)):\
+...     print i.excerse.id\
+  File "<console>", line 2\
+    print i.excerse.id\
+          ^\
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print(i.excerse.id)?\
+>>>\
+>>> for i in range(0,len(usrstats)):\
+...     print(i)\
+...\
+0\
+1\
+2\
+3\
+4\
+5\
+6\
+7\
+8\
+9\
+10\
+11\
+12\
+13\
+14\
+15\
+16\
+17\
+>>> for i in range(0,len(usrstats)):\
+...     print(i)\
+...\
+0\
+1\
+2\
+3\
+4\
+5\
+6\
+7\
+8\
+9\
+10\
+11\
+12\
+13\
+14\
+15\
+16\
+17\
+>>> for i in range(0,len(usrstats)):\
+...     print(i.exercise.id)\
+...\
+Traceback (most recent call last):\
+  File "<console>", line 2, in <module>\
+AttributeError: 'int' object has no attribute 'exercise'\
+>>>\
+>>> for i in range(0,len(usrstats)):\
+...     print\
+... (\
+KeyboardInterrupt\
+>>>\
+>>> for i in range(0,len(usrstats)):\
+...     print(stats[i])\
+...\
+Traceback (most recent call last):\
+  File "<console>", line 2, in <module>\
+NameError: name 'stats' is not defined\
+>>>\
+>>> for i in range(0,len(usrstats)):\
+...     print(usrstats[i])\
+...\
+Stat object (19)\
+Stat object (20)\
+Stat object (21)\
+Stat object (22)\
+Stat object (23)\
+Stat object (24)\
+Stat object (25)\
+Stat object (26)\
+Stat object (27)\
+Stat object (28)\
+Stat object (29)\
+Stat object (30)\
+Stat object (31)\
+Stat object (32)\
+Stat object (33)\
+Stat object (34)\
+Stat object (35)\
+Stat object (36)\
+>>>\
+>>> for i in range(0,len(usrstats)):\
+...     print(usrstats[i].exercise.id))\
+  File "<console>", line 2\
+SyntaxError: unmatched ')'\
+>>>\
+>>> for i in range(0,len(usrstats)):\
+...     print(usrstats[i].exercise.id)\
+...\
+11\
+11\
+11\
+11\
+11\
+11\
+16\
+16\
+16\
+16\
+16\
+16\
+16\
+16\
+16\
+16\
+16\
+16\
+>>>\
+\
+\
+\
+==========================================\
+\
+>>> pq = Stat.objects.values('exercise').distinct()\
+>>> pq\
+<QuerySet [\{'exercise': 1\}, \{'exercise': 10\}, \{'exercise': 11\}, \{'exercise': 16\}]>\
+>>> newst= Stat.objects.filter(exercise=Exercise.objects.get(id =2))\
+>>> newst\
+<QuerySet []>\
+>>> newst= Stat.objects.filter(exercise=Exercise.objects.get(id =1))\
+>>> newst\
+<QuerySet [<\
+id:1\
+user_id:1\
+1\
+>, <\
+id:2\
+user_id:1\
+1\
+>, <\
+id:3\
+user_id:1\
+1\
+>, <\
+id:4\
+user_id:1\
+1\
+>, <\
+id:5\
+user_id:1\
+1\
+>, <\
+id:6\
+user_id:1\
+1\
+>, <\
+id:7\
+user_id:1\
+1\
+>, <\
+id:8\
+user_id:1\
+1\
+>]>\
+>>> newust= Stat.objects.filter(exercise=Exercise.objects.get(id =1),user=User.objects.get(id=2)))\
+  File "<console>", line 1\
+SyntaxError: unmatched ')'\
+>>> newust= Stat.objects.filter(exercise=Exercise.objects.get(id =1),user=User.objects.get(id=2))\
+>>> newest\
+<QuerySet []>\
+>>> newust= Stat.objects.filter(exercise=Exercise.objects.get(id =1),user=User.objects.get(id=1))\
+>>> newust\
+<QuerySet [<\
+id:1\
+user_id:1\
+1\
+>, <\
+id:2\
+user_id:1\
+1\
+>, <\
+id:3\
+user_id:1\
+1\
+>, <\
+id:4\
+user_id:1\
+1\
+>, <\
+id:5\
+user_id:1\
+1\
+>, <\
+id:6\
+user_id:1\
+1\
+>, <\
+id:7\
+user_id:1\
+1\
+>, <\
+id:8\
+user_id:1\
+1\
+>]>\
+>>>\
+\
+\
+\
+======================================\
+>>> dt =  Stat.objects.values('exercise').distinct()\
+>>> for i in range(0,len(dt)):\
+...     print(dt[i].excercise.name)\
+...\
+Traceback (most recent call last):\
+  File "<console>", line 2, in <module>\
+AttributeError: 'dict' object has no attribute 'excercise'\
+>>>\
+>>> for i in range(0,len(dt)):\
+...     print(dt[i].exercise.name)\
+...\
+Traceback (most recent call last):\
+  File "<console>", line 2, in <module>\
+AttributeError: 'dict' object has no attribute 'exercise'\
+>>>\
+>>> for i in range(0,len(dt)):\
+...\
+...\
+...\
+...\
+KeyboardInterrupt\
+>>> dt\
+<QuerySet [\{'exercise': 1\}, \{'exercise': 10\}, \{'exercise': 11\}, \{'exercise': 16\}]>\
+>>> dt[0]['exercise']\
+1\
+>>>\
+\
+}

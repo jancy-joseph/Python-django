@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- {% load static %}
+    <script src="{% static 'js/script.js' %}"></script> -->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 text-left">
+                <h6>Welcome {{request.session.username}}</h6>
+            </div>
+            <div class="col-sm-4 text-right">
+                <a href="/myaccount/{{request.session.user_id}}">Edit My Account</a>
+            </div>
+            <div class="col-sm-4 text-right ">
+                <form action="/logout" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="myform" value="1">
+                <div class="form-group row">
+                    <div class="col-sm-3"></div>
+                    <input type="submit" value="Logout" class="col-sm-4 btn btn-primary">
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="col-sm-6">
+                    {% for post in posts.all reversed %}
+                        <div class="form-group row">
+                            {{post.message}}
+                        </div>
+                        <div class="form-group row">
+                                Postedby <a href="/user/{{post.user.id}}">{{post.user.first_name}}&nbsp;{{post.last_name}}</a>
+                        </div> 
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-left">
+                                <h6>{{post.likecount}} like this</h6>
+                            </div>
+                            <div class="col-sm-3 text-right">
+                                <form action="/{{post.id}}/like" method="POST">
+                                    {% csrf_token %}
+                                <input type="submit" value="Like" class="col-sm-3 btn btn-primary ">
+                                </form>
+                            </div> 
+                        </div>
+                        {% if request.session.user_id == post.user.id %}
+                            <div class="form-group row">
+                                <a href="/{{post.id}}/deletepost">Delete</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="col-sm-6">
+                    <form action="/addpost" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="myform" value="postadd">
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.extra_tags == "Authormessage" %}
+                        <span class="text-danger">{{message}}</span>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="form-group row">
+                            <label class="col-sm-4" for="Authormessage">Author</label>
+                            <textarea class="col-sm-12 form-control h-100" type="text" name="Authormessage"></textarea>
+                        </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.extra_tags == "Quotemessage" %}
+                        <span class="text-danger">{{message}}</span>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="form-group row">
+                            <label class="col-sm-4" for="Quotemessage">Quote</label>
+                            <textarea class="col-sm-12 form-control h-100" type="text" name="Quotemessage"></textarea>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4 offset-sm-7 align-right">
+                                <input type="submit" value="Submit" class="col-sm-5 btn btn-primary ">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

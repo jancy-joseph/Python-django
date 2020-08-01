@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read(All)</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 text-left">
+                <h1>All Shows</h1>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Network</th>
+                    <th>Release Date</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    {% for show in shows %}
+                        <tr>
+                            <td>{{show.id}}</td>
+                            <td>{{show.Title}}</td>
+                            <td>{{show.Network}}</td>
+                            <td>{{show.Release_Date}}</td>
+                            <td>
+                                <a href="/shows/{{show.id}}">Show</a>&nbsp;|<a href="/shows/{{show.id}}/edit">Edit</a>&nbsp;|<a href="/shows/{{show.id}}/destroy">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+        <div class="row">
+            <div class="col text-left">
+                <a href="shows/new">Add a new Show</a>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

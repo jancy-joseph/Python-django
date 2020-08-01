@@ -1,0 +1,304 @@
+(djangoPy3Env) smaliakkal-a01:assignment smaliakkal$ django-admin startproject usershellproj
+(djangoPy3Env) smaliakkal-a01:assignment smaliakkal$ cd usershellproj/
+(djangoPy3Env) smaliakkal-a01:usershellproj smaliakkal$ python manage.py startapp usershellapp
+(djangoPy3Env) smaliakkal-a01:usershellproj smaliakkal$ ls
+manage.py usershellapp  usershellproj
+(djangoPy3Env) smaliakkal-a01:usershellproj smaliakkal$ python manage.py makemigrations
+Traceback (most recent call last):
+  File "manage.py", line 21, in <module>
+    main()
+  File "manage.py", line 17, in main
+    execute_from_command_line(sys.argv)
+  File "/Users/smaliakkal/Desktop/Coding_Dojo/python_stack/my_environments/djangoPy3Env/lib/python3.8/site-packages/django/core/management/__init__.py", line 381, in execute_from_command_line
+    utility.execute()
+  File "/Users/smaliakkal/Desktop/Coding_Dojo/python_stack/my_environments/djangoPy3Env/lib/python3.8/site-packages/django/core/management/__init__.py", line 357, in execute
+    django.setup()
+  File "/Users/smaliakkal/Desktop/Coding_Dojo/python_stack/my_environments/djangoPy3Env/lib/python3.8/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/Users/smaliakkal/Desktop/Coding_Dojo/python_stack/my_environments/djangoPy3Env/lib/python3.8/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/Users/smaliakkal/Desktop/Coding_Dojo/python_stack/my_environments/djangoPy3Env/lib/python3.8/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/Users/smaliakkal/Desktop/Coding_Dojo/python_stack/django/django_orm/assignment/usershellproj/usershellapp/models.py", line 4, in <module>
+    class User(models.Model):
+  File "/Users/smaliakkal/Desktop/Coding_Dojo/python_stack/django/django_orm/assignment/usershellproj/usershellapp/models.py", line 5, in User
+    first_name = models.VARCHAR(255)
+AttributeError: module 'django.db.models' has no attribute 'VARCHAR'
+(djangoPy3Env) smaliakkal-a01:usershellproj smaliakkal$ python manage.py makemigrations
+Migrations for 'usershellapp':
+  usershellapp/migrations/0001_initial.py
+    - Create model User
+(djangoPy3Env) smaliakkal-a01:usershellproj smaliakkal$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, usershellapp
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying sessions.0001_initial... OK
+  Applying usershellapp.0001_initial... OK
+
+
+
+
+
+
+
+(djangoPy3Env) smaliakkal-a01:usershellproj smaliakkal$ python manage.py shell
+Python 3.8.1 (v3.8.1:1b293b6006, Dec 18 2019, 14:08:53) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from usershellapp.models import *
+>>> User.objects.all()
+<QuerySet []>
+>>> User.objects.all().first()
+>>> User.objects.create(first_name="Jancy",last_name="Joseph",email_address="jancy@joseph.com",age=38)
+<User Object# id: 1
+ first_name: Joseph
+ last_name: jancy@joseph.com
+ age: 38
+ created_at:2020-03-09 21:57:00.656125+00:00
+ updated_at2020-03-09 21:57:00.656219+00:00
+>
+>>> User.objects.create(first_name="Bob",last_name="Marley",email_address="bob@marley.com",age=20)
+<User Object# id: 2
+ first_name: Marley
+ last_name: bob@marley.com
+ age: 20
+ created_at:2020-03-09 21:57:40.681106+00:00
+ updated_at2020-03-09 21:57:40.681151+00:00
+>
+>>> User.objects.create(first_name="Whoppie",last_name="Goldberg",email_address="Whoopie@goldberg.com",age=60)
+<User Object# id: 3
+ first_name: Goldberg
+ last_name: Whoopie@goldberg.com
+ age: 60
+ created_at:2020-03-09 21:59:24.228677+00:00
+ updated_at2020-03-09 21:59:24.228720+00:00
+>
+>>> 
+
+>>> User.objects.all()
+<QuerySet [<User Object# id: 1
+ first_name: Jancy
+ last_name: Joseph
+ EmailAddress: jancy@joseph.com
+ age: 38
+ created_at:2020-03-09 21:57:00.656125+00:00
+ updated_at2020-03-09 21:57:00.656219+00:00
+>, <User Object# id: 2
+ first_name: Bob
+ last_name: Marley
+ EmailAddress: bob@marley.com
+ age: 20
+ created_at:2020-03-09 21:57:40.681106+00:00
+ updated_at2020-03-09 21:57:40.681151+00:00
+>, <User Object# id: 3
+ first_name: Whoppie
+ last_name: Goldberg
+ EmailAddress: Whoopie@goldberg.com
+ age: 60
+ created_at:2020-03-09 21:59:24.228677+00:00
+ updated_at2020-03-09 22:08:05.049739+00:00
+>]>
+
+
+>>> User.objects.all().first()
+<User Object# id: 1
+ first_name: Jancy
+ last_name: Joseph
+ EmailAddress: jancy@joseph.com
+ age: 38
+ created_at:2020-03-09 21:57:00.656125+00:00
+ updated_at2020-03-09 21:57:00.656219+00:00
+>
+
+
+>>> User.objects.all().last()
+<User Object# id: 3
+ first_name: Whoppie
+ last_name: Goldberg
+ EmailAddress: Whoopie@goldberg.com
+ age: 60
+ created_at:2020-03-09 21:59:24.228677+00:00
+ updated_at2020-03-09 22:08:05.049739+00:00
+>
+
+>>> thirdobj = User.objects.get(id=3)
+>>> thirdobj.last_name = "Pancakes"
+>>> thirdobj.save()
+>>> User.objects.all()
+<QuerySet [<User Object# id: 1
+ first_name: Jancy
+ last_name: Joseph
+ EmailAddress: jancy@joseph.com
+ age: 38
+ created_at:2020-03-09 21:57:00.656125+00:00
+ updated_at2020-03-09 21:57:00.656219+00:00
+>, <User Object# id: 2
+ first_name: Bob
+ last_name: Marley
+ EmailAddress: bob@marley.com
+ age: 20
+ created_at:2020-03-09 21:57:40.681106+00:00
+ updated_at2020-03-09 21:57:40.681151+00:00
+>, <User Object# id: 3
+ first_name: Whoppie
+ last_name: Pancakes
+ EmailAddress: Whoopie@goldberg.com
+ age: 60
+ created_at:2020-03-09 21:59:24.228677+00:00
+ updated_at2020-03-09 22:08:33.723507+00:00
+>]>
+>>> 
+
+>>> seconddobj = User.objects.get(id=2)
+>>> seconddobj
+<User Object# id: 2
+ first_name: Bob
+ last_name: Marley
+ EmailAddress: bob@marley.com
+ age: 20
+ created_at:2020-03-09 22:12:02.218691+00:00
+ updated_at2020-03-09 22:12:02.218724+00:00
+>
+>>> seconddobj.delete()
+(1, {'usershellapp.User': 1})
+>>> User.objects.all()
+<QuerySet [<User Object# id: 1
+ first_name: Jancy
+ last_name: Joseph
+ EmailAddress: jancy@joseph.com
+ age: 38
+ created_at:2020-03-09 21:57:00.656125+00:00
+ updated_at2020-03-09 21:57:00.656219+00:00
+>, <User Object# id: 3
+ first_name: Whoppie
+ last_name: Pancakes
+ EmailAddress: Whoopie@goldberg.com
+ age: 60
+ created_at:2020-03-09 21:59:24.228677+00:00
+ updated_at2020-03-09 22:08:33.723507+00:00
+>]>
+>>> 
+
+
+
+>>> User.objects.all()
+<QuerySet [<User Object# id: 1
+ first_name: Jancy
+ last_name: Joseph
+ EmailAddress: jancy@joseph.com
+ age: 38
+ created_at:2020-03-09 21:57:00.656125+00:00
+ updated_at2020-03-09 21:57:00.656219+00:00
+>, <User Object# id: 3
+ first_name: Whoppie
+ last_name: Pancakes
+ EmailAddress: Whoopie@goldberg.com
+ age: 60
+ created_at:2020-03-09 21:59:24.228677+00:00
+ updated_at2020-03-09 22:08:33.723507+00:00
+>, <User Object# id: 4
+ first_name: AAAAA
+ last_name: ZZZZZZZZ
+ EmailAddress: AAAAA@ZZZZZZ.com
+ age: 111111
+ created_at:2020-03-09 22:15:46.961463+00:00
+ updated_at2020-03-09 22:15:46.961506+00:00
+>, <User Object# id: 5
+ first_name: ZzzzXXXYYYYYZ
+ last_name: XXZZZ
+ EmailAddress: AAAAA@ZZZZZZ.com
+ age: 999
+ created_at:2020-03-09 22:16:52.996667+00:00
+ updated_at2020-03-09 22:16:52.996706+00:00
+>]>
+>>> 
+
+
+>>> User.objects.all()
+<QuerySet [<User Object# id: 1
+ first_name: Jancy
+ last_name: Joseph
+ EmailAddress: jancy@joseph.com
+ age: 38
+ created_at:2020-03-09 21:57:00.656125+00:00
+ updated_at2020-03-09 21:57:00.656219+00:00
+>, <User Object# id: 3
+ first_name: Whoppie
+ last_name: Pancakes
+ EmailAddress: Whoopie@goldberg.com
+ age: 60
+ created_at:2020-03-09 21:59:24.228677+00:00
+ updated_at2020-03-09 22:08:33.723507+00:00
+>, <User Object# id: 4
+ first_name: AAAAA
+ last_name: ZZZZZZZZ
+ EmailAddress: AAAAA@ZZZZZZ.com
+ age: 111111
+ created_at:2020-03-09 22:15:46.961463+00:00
+ updated_at2020-03-09 22:15:46.961506+00:00
+>, <User Object# id: 5
+ first_name: ZzzzXXXYYYYYZ
+ last_name: XXZZZ
+ EmailAddress: AAAAA@ZZZZZZ.com
+ age: 999
+ created_at:2020-03-09 22:16:52.996667+00:00
+ updated_at2020-03-09 22:16:52.996706+00:00
+>]>
+>>> 
+
+>>> User.objects.all()
+<QuerySet [<User Object# id: 1
+ first_name: Jancy
+ last_name: Joseph
+ EmailAddress: jancy@joseph.com
+ age: 38
+ created_at:2020-03-09 21:57:00.656125+00:00
+ updated_at2020-03-09 21:57:00.656219+00:00
+>, <User Object# id: 3
+ first_name: Whoppie
+ last_name: Pancakes
+ EmailAddress: Whoopie@goldberg.com
+ age: 60
+ created_at:2020-03-09 21:59:24.228677+00:00
+ updated_at2020-03-09 22:08:33.723507+00:00
+>, <User Object# id: 4
+ first_name: AAAAA
+ last_name: ZZZZZZZZ
+ EmailAddress: AAAAA@ZZZZZZ.com
+ age: 111111
+ created_at:2020-03-09 22:15:46.961463+00:00
+ updated_at2020-03-09 22:15:46.961506+00:00
+>, <User Object# id: 5
+ first_name: ZzzzXXXYYYYYZ
+ last_name: XXZZZ
+ EmailAddress: AAAAA@ZZZZZZ.com
+ age: 999
+ created_at:2020-03-09 22:16:52.996667+00:00
+ updated_at2020-03-09 22:16:52.996706+00:00
+>]>
+>>> 

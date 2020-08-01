@@ -1,0 +1,686 @@
+ python manage.py shell
+Python 3.8.1 (v3.8.1:1b293b6006, Dec 18 2019, 14:08:53) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>>
+>>> from books_authors_app.models import *
+>>> Book.objects.all()
+<QuerySet []>
+>>> Author.objects.all()
+<QuerySet []>
+
+>>> book1 = Book.objects.create(title="C Sharp",desc="some description of C Sharp")
+>>> book2 = Book.objects.create(title="Java",desc="some description of Java")
+>>> book3 = Book.objects.create(title="Python",desc="some description of Python")
+>>> book4 = Book.objects.create(title="PHP",desc="some description of PHP")
+>>> book5 = Book.objects.create(title="Ruby",desc="some description of Ruby")
+>>> Jane Austen, Emily Dickinson, Fyodor Dostoevksy, William Shakespeare, Lau Tzu
+  File "<console>", line 1
+    Jane Austen, Emily Dickinson, Fyodor Dostoevksy, William Shakespeare, Lau Tzu
+         ^
+SyntaxError: invalid syntax
+>>> author1= Author.objects.create(first_name="Jane",last_name="Austen")
+>>> author2= Author.objects.create(first_name="Emily",last_name="Dickinson")
+>>> author3= Author.objects.create(first_name="Fyodor",last_name="Dostoevsky")
+>>> author4= Author.objects.create(first_name="William",last_name="Shakespeare")
+>>> author5= Author.objects.create(first_name="Lau",last_name="Tzu")
+>>> 
+>>> Author.objects.all()
+<QuerySet [<
+id:1
+first_name:Jane
+last_nameAusten
+books:books_authors_app.Book.None
+>, <
+id:2
+first_name:Emily
+last_nameDickinson
+books:books_authors_app.Book.None
+>, <
+id:3
+first_name:Fyodor
+last_nameDostoevsky
+books:books_authors_app.Book.None
+>, <
+id:4
+first_name:William
+last_nameShakespeare
+books:books_authors_app.Book.None
+>, <
+id:5
+first_name:lai
+last_nameTzu
+books:books_authors_app.Book.None
+>]>
+>>> Book.objects.all()
+<QuerySet [<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>, <
+id:3
+title:Java
+description:some description of Java
+>, <
+id:4
+title:Python
+description:some description of Python
+>, <
+id:5
+title:PHP
+description:some description of PHP
+>, <
+id:6
+title:Ruby
+description:some description of Ruby
+>]>
+>>> 
+(djangoPy3Env) smaliakkal-a01:book_authors_proj smaliakkal$ python manage.py makemigrations
+You are trying to add a non-nullable field 'notes' to author without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1   
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> "old authors"
+Migrations for 'books_authors_app':
+  books_authors_app/migrations/0002_author_notes.py
+    - Add field notes to author
+(djangoPy3Env) smaliakkal-a01:book_authors_proj smaliakkal$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, books_authors_app, contenttypes, sessions
+Running migrations:
+  Applying books_authors_app.0002_author_notes... OK
+(djangoPy3Env) smaliakkal-a01:book_authors_proj smaliakkal$ 
+
+
+
+
+
+>>> b1 = Book.objects.all().get(id=2)
+>>> b1
+<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>
+>>> b1.title="c#"
+>>> b1
+<
+id:2
+title:c#
+description:some description of C Sharp
+>
+>>> 
+
+
+
+
+>>> a1 = Author.objects.all().get(id=4)
+>>> a1
+<
+id:4
+first_name:William
+last_nameShakespeare
+books:books_authors_app.Book.None
+>
+>>> a1.first_name = "Bill"
+>>> a1
+<
+id:4
+first_name:Bill
+last_nameShakespeare
+books:books_authors_app.Book.None
+>
+>>> 
+	
+
+
+
+
+>>> Book.objects.all()
+<QuerySet [<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>, <
+id:3
+title:Java
+description:some description of Java
+>, <
+id:4
+title:Python
+description:some description of Python
+>, <
+id:5
+title:PHP
+description:some description of PHP
+>, <
+id:6
+title:Ruby
+description:some description of Ruby
+>]>
+>>> Author.objects.all()
+<QuerySet [<
+id:1
+first_name:Jane
+last_nameAusten
+books:books_authors_app.Book.None
+>, <
+id:2
+first_name:Emily
+last_nameDickinson
+books:books_authors_app.Book.None
+>, <
+id:3
+first_name:Fyodor
+last_nameDostoevsky
+books:books_authors_app.Book.None
+>, <
+id:4
+first_name:William
+last_nameShakespeare
+books:books_authors_app.Book.None
+>, <
+id:5
+first_name:Lau
+last_nameTzu
+books:books_authors_app.Book.None
+>]>
+>>> 
+
+>>> a1 = Author.objects.all().get(id=1)
+>>> a2 = Author.objects.all().get(id=2)
+>>> a3= Author.objects.all().get(id=3)
+>>> a4= Author.objects.all().get(id=4)
+>>> a1
+<
+id:1
+first_name:Jane
+last_nameAusten
+books:books_authors_app.Book.None
+>
+>>> a2
+<
+id:2
+first_name:Emily
+last_nameDickinson
+books:books_authors_app.Book.None
+>
+>>> a3
+<
+id:3
+first_name:Fyodor
+last_nameDostoevsky
+books:books_authors_app.Book.None
+>
+>>> a44
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'a44' is not defined
+>>> a4
+<
+id:4
+first_name:William
+last_nameShakespeare
+books:books_authors_app.Book.None
+>
+>>> 
+
+>>> Book.objects.all()
+<QuerySet [<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>, <
+id:3
+title:Java
+description:some description of Java
+>, <
+id:4
+title:Python
+description:some description of Python
+>, <
+id:5
+title:PHP
+description:some description of PHP
+>, <
+id:6
+title:Ruby
+description:some description of Ruby
+>]>
+>>>
+
+
+>>> b1 = Book.objects.all().get(id=2)
+>>> b2 = Book.objects.all().get(id=3)
+>>> b3 = Book.objects.all().get(id=4)
+>>> b4 = Book.objects.all().get(id=5)
+>>> b5 = Book.objects.all().get(id=6)
+
+>>> b1
+<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>
+>>> b2
+<
+id:3
+title:Java
+description:some description of Java
+>
+>>> b3
+<
+id:4
+title:Python
+description:some description of Python
+>
+>>> b4
+<
+id:5
+title:PHP
+description:some description of PHP
+>
+>>> b5
+<
+id:6
+title:Ruby
+description:some description of Ruby
+>
+>
+
+
+
+>>> a1.books.add(b1)
+>>> a1.books.add(b2)
+>>> a1
+<
+id:1
+first_name:Jane
+last_nameAusten
+books:books_authors_app.Book.None
+>
+>>> a1.books.all()
+<QuerySet [<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>, <
+id:3
+title:Java
+description:some description of Java
+>]>
+>>> 
+
+
+
+>>> a2.books.add(b1)
+>>> a2.books.add(b2)
+>>> a2.books.add(b3)
+>>> a2.books.all()
+<QuerySet [<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>, <
+id:3
+title:Java
+description:some description of Java
+>, <
+id:4
+title:Python
+description:some description of Python
+>]>
+>>> 
+
+
+
+>>> a3.books.all()
+<QuerySet []>
+>>> a3.books.add(b1)
+>>> a3.books.add(b2)
+>>> a3.books.add(b3)
+>>> a3.books.add(b4)
+>>> a3.books.all()
+<QuerySet [<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>, <
+id:3
+title:Java
+description:some description of Java
+>, <
+id:4
+title:Python
+description:some description of Python
+>, <
+id:5
+title:PHP
+description:some description of PHP
+>]>
+>>> a4.books.all()
+<QuerySet []>
+>>> a4.books.add(b1)
+>>> a4.books.add(b2)
+>>> a4.books.add(b3)
+>>> a4.books.add(b4)
+>>> a4.books.add(b5)
+>>> a4.books.all()
+<QuerySet [<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>, <
+id:3
+title:Java
+description:some description of Java
+>, <
+id:4
+title:Python
+description:some description of Python
+>, <
+id:5
+title:PHP
+description:some description of PHP
+>, <
+id:6
+title:Ruby
+description:some description of Ruby
+>]>
+>>> 
+
+
+
+ b3.authors.all()
+>> b3.authors.all()
+<QuerySet [<
+id:2
+first_name:Emily
+last_nameDickinson
+books:books_authors_app.Book.None
+>, <
+id:3
+first_name:Fyodor
+last_nameDostoevsky
+books:books_authors_app.Book.None
+>, <
+id:4
+first_name:William
+last_nameShakespeare
+books:books_authors_app.Book.None
+>]>
+>>> b3.authors.all().get(id=2)
+<
+id:2
+first_name:Emily
+last_nameDickinson
+books:books_authors_app.Book.None
+>
+>>> b3.authors.all().get(id=2).delete()
+(4, {'books_authors_app.Author_books': 3, 'books_authors_app.Author': 1})
+>>> b3.authors.all()
+<QuerySet [<
+id:3
+first_name:Fyodor
+last_nameDostoevsky
+books:books_authors_app.Book.None
+>, <
+id:4
+first_name:William
+last_nameShakespeare
+books:books_authors_app.Book.None
+>]>
+>>> 
+
+
+
+Now I have messed up....instead of Removing I have deleted the author...so doing the work below to restore it to its original relations.
+
+>>a2 = Author.create(first_name="Emily",last_name="Dickinson",notes="old author")
+>>> a2 = Author.objects.create(first_name="Emily",last_name="Dickinson",notes="old author")
+>>> a2.books.add(b1)
+>>> a2.books.add(b2)
+>>> a2.books.add(b3)
+>>> a2.books.all()
+<QuerySet [<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>, <
+id:3
+title:Java
+description:some description of Java
+>, <
+id:4
+title:Python
+description:some description of Python
+>]>
+>>> a3.books.all()
+<QuerySet [<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>, <
+id:3
+title:Java
+description:some description of Java
+>, <
+id:4
+title:Python
+description:some description of Python
+>, <
+id:5
+title:PHP
+description:some description of PHP
+>]>
+>>> Author.objects.all()
+<QuerySet [<
+id:1
+first_name:Jane
+last_nameAusten
+books:books_authors_app.Book.None
+>, <
+id:3
+first_name:Fyodor
+last_nameDostoevsky
+books:books_authors_app.Book.None
+>, <
+id:4
+first_name:William
+last_nameShakespeare
+books:books_authors_app.Book.None
+>, <
+id:5
+first_name:Lau
+last_nameTzu
+books:books_authors_app.Book.None
+>, <
+id:6
+first_name:Emily
+last_nameDickinson
+books:books_authors_app.Book.None
+>]>
+>>>
+
+
+ 
+>>> b3.authors.all()
+<QuerySet [<
+id:3
+first_name:Fyodor
+last_nameDostoevsky
+books:books_authors_app.Book.None
+>, <
+id:4
+first_name:William
+last_nameShakespeare
+books:books_authors_app.Book.None
+>, <
+id:6
+first_name:Emily
+last_nameDickinson
+books:books_authors_app.Book.None
+>]>
+>>>
+
+So now I have to try deleting id 6 instead of 2
+
+Tell about my stupidity:
+=======================
+>>> a2
+<
+id:6
+first_name:Emily
+last_nameDickinson
+books:books_authors_app.Book.None
+>
+>>> 
+ 
+b3.authors.all().get(id=6)
+>>> b3.authors.all().get(id=6)
+<
+id:6
+first_name:Emily
+last_nameDickinson
+books:books_authors_app.Book.None
+>>> b3.authors.remove(a2)
+
+>>> b3.authors.all()
+<QuerySet [<
+id:3
+first_name:Fyodor
+last_nameDostoevsky
+books:books_authors_app.Book.None
+>, <
+id:4
+first_name:William
+last_nameShakespeare
+books:books_authors_app.Book.None
+>]>
+
+
+
+>>> b2.authors.add(a5)
+>>> b2
+<
+id:3
+title:Java
+description:some description of Java
+>
+>>> b2.authors.all()
+<QuerySet [<
+id:1
+first_name:Jane
+last_nameAusten
+books:books_authors_app.Book.None
+>, <
+id:3
+first_name:Fyodor
+last_nameDostoevsky
+books:books_authors_app.Book.None
+>, <
+id:4
+first_name:William
+last_nameShakespeare
+books:books_authors_app.Book.None
+>, <
+id:6
+first_name:Emily
+last_nameDickinson
+books:books_authors_app.Book.None
+>, <
+id:5
+first_name:Lau
+last_nameTzu
+books:books_authors_app.Book.None
+>]>
+>>> >
+
+
+
+
+=================
+
+So finally getting to restart where I left of
+
+>>> a3
+<
+id:3
+first_name:Fyodor
+last_nameDostoevsky
+books:books_authors_app.Book.None
+>
+>>> a3.books.all()
+<QuerySet [<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>, <
+id:3
+title:Java
+description:some description of Java
+>, <
+id:4
+title:Python
+description:some description of Python
+>, <
+id:5
+title:PHP
+description:some description of PHP
+>]>
+>>> 
+
+>>> a3
+<
+id:3
+first_name:Fyodor
+last_nameDostoevsky
+books:books_authors_app.Book.None
+>
+>>> a3.books.all()
+<QuerySet [<
+id:2
+title:C Sharp
+description:some description of C Sharp
+>, <
+id:3
+title:Java
+description:some description of Java
+>, <
+id:4
+title:Python
+description:some description of Python
+>, <
+id:5
+title:PHP
+description:some description of PHP
+>]>
+>>> 
+>>> 
+
+
+>>> b5
+<
+id:6
+title:Ruby
+description:some description of Ruby
+>
+>>> b5.authors.all()
+<QuerySet [<
+id:4
+first_name:William
+last_nameShakespeare
+books:books_authors_app.Book.None
+>]>
+>>> 
+
+
+
+
+
+

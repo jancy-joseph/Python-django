@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- {% load static %}
+    <script src="{% static 'js/script.js' %}"></script> -->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-sm-4 text-left">
+                    <h6>Edit My Account</h6>
+                </div>
+                <div class="col-sm-4 text-right">
+                    <a href="/success">Go Back</a>
+                </div>
+                <div class="col-sm-4 text-right ">
+                    <form action="/logout" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="myform" value="edit1">
+                    <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <input type="submit" value="Logout" class="col-sm-4 btn btn-primary">
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <form action="/{{mynewuser.id}}/Update" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="myform" value="edit2">
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.extra_tags == "first_name" %}
+                <span class="text-danger">{{message}}</span>
+                {% endif %}
+                {% endfor %}
+                {% endif %}               
+                <div class="form-group row">
+                    <label class="col-sm-4" for="first_name">First Name</label>
+                    <input class="col-sm-8 form-control" type="text" name="first_name" value="{{mynewuser.first_name}}" >
+                </div>
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.extra_tags == "last_name" %}
+                <span class="text-danger">{{message}}</span>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <div class="form-group row">
+                    <label class="col-sm-4" for="last_name">Last Name </label>
+                    <input class="col-sm-8 form-control" type="text" name="last_name" value="{{mynewuser.last_name}}" >
+                </div>
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.extra_tags == "email" %}
+                <span class="text-danger">{{message}}</span>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <div class="form-group row">
+                    <label class="col-sm-4" for="email">Email </label>
+                    <input class="col-sm-8 form-control" type="email" name="email" value="{{mynewuser.email}}" >
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3"></div>
+                    <input type="submit" value="Update" class="col-sm-4 btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,12 @@
+#mydivform{
+    padding:20px;
+    margin:30px;
+    display:block;
+    text-align:left;
+    width:300px;
+    min-height:300px;
+    background-color:cadetblue;
+}
+#mycomments{
+    size:200px; 
+}
